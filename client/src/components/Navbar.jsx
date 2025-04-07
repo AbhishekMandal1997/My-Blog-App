@@ -11,23 +11,37 @@ export default function Navbar() {
   };
 
   return (
-    <nav style={{ display: 'flex', gap: '1rem', padding: '1rem' }}>
-      <h3>Blog-App</h3>
-      <div>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
+    <nav>
+      <div className="nav-brand">
+        <Link to="/" className="brand-link">
+          <h3>BlogApp</h3>
+        </Link>
+      </div>
+      
+      <div className="nav-links">
+        <Link to="/" className="nav-link">Home</Link>
+        <Link to="/about" className="nav-link">About</Link>
+        <Link to="/contact" className="nav-link">Contact</Link>
+        
         {user ? (
-          <>
-            <Link to="/create">Create</Link>
-            <span> <strong>{user.username.toUpperCase()} </strong> </span>
-            <button onClick={handleLogout}>Logout</button>
-          </>
+          <div className="user-section">
+            <Link to="/create" className="nav-link create-link">
+              Create Post
+            </Link>
+            <div className="user-info">
+              <span className="username">{user.username}</span>
+              <button onClick={handleLogout} className="logout-btn">
+                Logout
+              </button>
+            </div>
+          </div>
         ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </>
+          <div className="auth-links">
+            <Link to="/login" className="nav-link">Login</Link>
+            <Link to="/register" className="nav-link register-link">
+              Register
+            </Link>
+          </div>
         )}
       </div>
     </nav>
