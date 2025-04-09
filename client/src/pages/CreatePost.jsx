@@ -10,11 +10,12 @@ export default function CreatePost() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const api = 'https://my-blog-app-6bjg.onrender.com'
   const handleSubmit = async (e) => {
     e.preventDefault();
     const token = localStorage.getItem('token');
     try {
-      await axios.post('http://localhost:5000/api/posts', formData, {
+      await axios.post(`${api}/api/posts`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

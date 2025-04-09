@@ -7,11 +7,12 @@ export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
   const { login } = useAuth();
   const navigate = useNavigate();
+  const api = 'https://my-blog-app-6bjg.onrender.com'
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', form);
+      const res = await axios.post(`${api}/api/auth/login`, form);
       login(res.data.user, res.data.token);
       alert('Logged in');
       navigate('/');

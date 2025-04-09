@@ -6,10 +6,11 @@ export default function Register() {
   const [form, setForm] = useState({ username: '', email: '', password: '' });
 
   const navigate = useNavigate();
+  const api = 'https://my-blog-app-6bjg.onrender.com'
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/auth/register', form);
+      await axios.post(`${api}/api/auth/register`, form);
       alert('Registered successfully');
       navigate('/login')
     } catch (err) {

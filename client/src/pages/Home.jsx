@@ -7,9 +7,10 @@ export default function Home() {
   const [featuredPost, setFeaturedPost] = useState(null);
 
   useEffect(() => {
+    const api = 'https://my-blog-app-6bjg.onrender.com'
     const fetchPosts = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/posts');
+        const res = await axios.get(`${api}/api/posts`);
         setPosts(res.data);
         if (res.data.length > 0) {
           setFeaturedPost(res.data[0]);

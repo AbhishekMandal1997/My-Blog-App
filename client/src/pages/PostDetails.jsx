@@ -6,10 +6,11 @@ export default function PostDetails() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
+  const api = 'https://my-blog-app-6bjg.onrender.com'
 
   const fetchPost = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/posts/${id}`);
+      const res = await axios.get(`${api}/api/posts/${id}`);
       setPost(res.data);
     } catch (err) {
       console.error('Failed to fetch post', err);
@@ -23,7 +24,7 @@ export default function PostDetails() {
   const handleDelete = async () => {
     const token = localStorage.getItem('token');
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${id}`, {
+      await axios.delete(`${api}/api/posts/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

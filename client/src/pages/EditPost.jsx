@@ -6,10 +6,11 @@ export default function EditPost() {
   const { id } = useParams();
   const [form, setForm] = useState({ title: '', content: '' });
   const navigate = useNavigate();
+  const api = 'https://my-blog-app-6bjg.onrender.com'
 
   useEffect(() => {
     const fetchPost = async () => {
-      const res = await axios.get(`http://localhost:5000/api/posts/${id}`);
+      const res = await axios.get(`${api}/api/posts/${id}`);
       setForm({ title: res.data.title, content: res.data.content });
     };
     fetchPost();
@@ -20,7 +21,7 @@ export default function EditPost() {
     try {
       const token = localStorage.getItem('token');
       await axios.put(
-        `http://localhost:5000/api/posts/${id}`,
+        `${api}/api/posts/${id}`,
         form,
         { headers: { Authorization: `Bearer ${token}` } }
       );
