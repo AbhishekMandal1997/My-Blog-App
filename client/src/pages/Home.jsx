@@ -11,7 +11,6 @@ export default function Home() {
       try {
         const res = await axios.get('http://localhost:5000/api/posts');
         setPosts(res.data);
-        // Set the first post as featured
         if (res.data.length > 0) {
           setFeaturedPost(res.data[0]);
         }
